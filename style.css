@@ -15,7 +15,6 @@ body{
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10 and IE 11 */
     user-select: none; /* Standard syntax */
-
     font-family: 'Poppins', sans-serif;
     display: flex;
     align-items: center;
@@ -37,6 +36,16 @@ body{
 
 .quiz_section{
     padding: 30px 50px;
+    position: relative;
+}
+
+.message{
+    width: 100%;
+    text-align: center;
+    color: rgba(128, 128, 128, 0.5);
+    top: 0;
+    left: 0;
+    position: absolute;
 }
 
 h2{

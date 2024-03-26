@@ -1,11 +1,11 @@
-const quizzDatta = [
+const quizData = [
     { 
         question: "What is the capital of the United States?",
         a: "Washington, D.C",
         b: "New York City",
         c: "Los Angeles",
         d: "Chicago",
-        Correct : "a",
+        correct : "a",
     },  
     {   
         question: "In which year did the United States declare its independence?",
@@ -13,7 +13,7 @@ const quizzDatta = [
         b: 1789,
         c: 1800,
         d: 1620,
-        Correct : "a",
+        correct : "a",
     }, 
     {
         question: "Who is known as the 'Father of the Constitution' in the United States?",
@@ -21,7 +21,7 @@ const quizzDatta = [
         b: "Thomas Jefferson",
         c: "James Madison",
         d: "Benjamin Franklin",
-        Correct : "c",
+        correct : "c",
     },
     {
         question: "Which mountain range runs along the western part of the United States?",
@@ -29,7 +29,7 @@ const quizzDatta = [
         b: "Appalachian Mountains",
         c: "Sierra Nevada",
         d: "Cascade Range",
-        Correct : "a",
+        correct : "a",
     },
     {
         question: "What is the national What is a commonly recognized symbol of the United States?",
@@ -37,7 +37,7 @@ const quizzDatta = [
         b: "Peregrine Falcon",
         c: "American Robin",
         d: "Osprey",
-        Correct : "",
+        correct : "",
     },
     {
         question: "Which document outlines the fundamental laws and principles of the United States?",
@@ -45,7 +45,7 @@ const quizzDatta = [
         b: "Emancipation Proclamation",
         c: "Bill of Rights",
         d: "Constitution",
-        Correct : "d",
+        correct : "d",
     },
     {
         question: "Which U.S. state is known as the 'Sunshine State'?",
@@ -53,7 +53,7 @@ const quizzDatta = [
         b: "Florida",
         c: "Texas",
         d: "Arizona",
-        Correct : "b",
+        correct : "b",
     },
     {
         question: "Who were the 16th and 26th Presidents of the United States?",
@@ -61,7 +61,7 @@ const quizzDatta = [
         b: "Thomas Jefferson",
         c: "Andrew Jackson",
         d: "Theodore Roosevelt",
-        Correct : "a,c",
+        correct : "a,c",
     },
     {
         question: "What is the largest river in the United States?",
@@ -69,7 +69,7 @@ const quizzDatta = [
         b: "Colorado River",
         c: "Ohio River",
         d: "Columbia River",
-        Correct : "a",    
+        correct : "a",    
     },
     {
         question: "In which city did the historic event known as the Boston Tea Party take place?",
@@ -77,7 +77,7 @@ const quizzDatta = [
         b: "Boston",
         c: "New York City",
         d: "Charleston",
-        Correct : "b",
+        correct : "b",
         }
 ];
 
@@ -98,7 +98,13 @@ loadQuizz()
 
 function loadQuizz(){
     deselectanswer()
-    const currentQuizData = quizzDatta[currentQuiz]
+    const currentQuizData = quizData[currentQuiz]
+
+    if(currentQuizData.correct){
+        console.log("Reponse à la Q" + (currentQuiz +1).toString() + " est: " + currentQuizData.correct)  
+    }else{ 
+        console.log("Aucune question est correct")
+    }
 
     questionEls.innerText = currentQuizData.question
     a_answer.innerText = currentQuizData.a
@@ -129,7 +135,7 @@ function handleNextButton(){
 
 btn_Next.addEventListener('click', () => {
     var getSelected = getselected().length ? getselected() : null;
-    var currentAnswer = quizzDatta[currentQuiz].Correct.split(",");
+    var currentAnswer = quizData[currentQuiz].correct.split(",");
 
     if(getSelected){
         if(currentAnswer.length === 1){
@@ -162,7 +168,7 @@ btn_Next.addEventListener('click', () => {
         score += 2;
     }
     
-    if(currentQuiz >= (quizzDatta.length -1)){
+    if(currentQuiz >= (quizData.length -1)){
         sessionStorage.setItem("score", score);
         loadQuizz()
         currentQuiz = score = 0

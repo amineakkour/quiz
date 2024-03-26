@@ -11,7 +11,8 @@
 
 
     <script>
-        document.querySelector("#score").innerText = sessionStorage.getItem("score");
+        const score = sessionStorage.getItem("score");
+        document.querySelector("#score").innerText = score;
     </script>
 </body>
 </html>
